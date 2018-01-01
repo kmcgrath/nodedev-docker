@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y \
   curl \
   git \
   bash \
-  && curl -L https://bit.ly/janus-bootstrap | bash
+  jq \
+  && curl -L https://bit.ly/janus-bootstrap | bash \
+  && mkdir /code
 
 # NVM
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash \
@@ -18,6 +20,8 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh
       && nvm install v4"
 
 ADD scripts/entry.sh /scripts/entry.sh
+
+WORKDIR /code
 
 ENTRYPOINT ["/scripts/entry.sh"]
 

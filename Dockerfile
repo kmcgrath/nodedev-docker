@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y \
   git \
   bash \
   jq \
+  ack-grep \
+  ctags \
+  bash-completion \
   && curl -L https://bit.ly/janus-bootstrap | bash \
   && mkdir /code
 
